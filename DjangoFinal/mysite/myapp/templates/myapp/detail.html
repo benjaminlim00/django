@@ -1,0 +1,27 @@
+<h1>{{ student.student_name }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+
+<form action="{% url 'myapp:edit' student.id %}" method="post">
+{% csrf_token %}
+
+<ul>
+{% for lesson in student.lesson_set.all %}
+    {% if lesson.present %}
+         {#<li>{{ lesson.lesson_date }} -- present</li>#}
+         <input type="radio" name="lesson" id="lesson{{ forloop.counter }}" value="{{ lesson.id }}" />
+         <label for="lesson{{ forloop.counter }}">{{ lesson.lesson_date }} -- present</label><br />
+    {% else %}
+         {#<li>{{ lesson.lesson_date }} -- absent</li>#}
+         <input type="radio" name="lesson" id="lesson{{ forloop.counter }}" value="{{ lesson.id }}" />
+         <label for="lesson{{ forloop.counter }}">{{ lesson.lesson_date }} -- absent</label><br />
+    {% endif %}
+{% endfor %}
+</ul>
+
+<input type="submit" value="edit" />
+
+</form>
+
+<a href="{% url 'myapp:index' %}">Go back</a

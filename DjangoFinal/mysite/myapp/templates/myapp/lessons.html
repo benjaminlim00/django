@@ -1,0 +1,14 @@
+<h1>Here is the list of all lessons scheduled.</h1>
+
+{% if lesson_list %}
+    <ul>
+    {% for lesson in lesson_list %}
+        <li><a href="{{ lesson.Student.id }}/">{{lesson.lesson_date}} - {{ lesson.Student.student_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No lessons scheduled.</p>
+{% endif %}
+
+
+<a href="{% url 'myapp:index' %}">Go back to index page</a>

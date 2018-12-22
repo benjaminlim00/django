@@ -1,0 +1,21 @@
+{% extends "myapp/base_generic.html" %}
+
+{% block content %}
+<h1>Ben's website</h1>
+
+  <p>Welcome,  here is a very basic Django website built for attendance taking.</p>
+
+<h2>List of all students</h2>
+
+  <p>LCCL coding academy currently has the following registered students:</p>
+  {% if student_list %}
+      <ul>
+      {% for student in student_list %}
+          <li><a href="{{ student.id }}/">{{ student.student_name }}</a></li>
+      {% endfor %}
+      </ul>
+  {% else %}
+      <p>No lessons scheduled.</p>
+  {% endif %}
+
+{% endblock %}

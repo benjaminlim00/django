@@ -1,0 +1,14 @@
+<h1>All students</h1>
+
+
+{% if student_list %}
+    <ul>
+    {% for student in student_list %}
+        <li><a href="/myapp/{{ student.id }}/">{{ student.student_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No lessons scheduled.</p>
+{% endif %}
+
+<a href="/myapp/lessons">See all lessons</a>
